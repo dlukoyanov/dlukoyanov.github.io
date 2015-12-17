@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app.js"></script>
+    <meta charset="utf-8">
+    <style type="text/css">
+        .wrapper {
+            text-align: left;
+            padding-left:20%;
+            padding-right:20%;
+        }
+        .wrapper textarea{
+            width: 700px;          
+        }
+        .wrapper div{
+            padding-top: 20px;       
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper" ng-controller="base64Controller">
+    <h1>Base64 decoder/encoder</h1>
+    <label></label>
+    <textarea elastic ng-model="yourText"></textarea>
+
+    <div>{{yourText}}</div>
+    
+    <div class="enc" style="width: 76em; word-wrap: break-word;">{{encode(yourText)}}</div>
+    
+    <div class="dec">{{decode(yourText)}}</div>
+</div>
+</body>
+</html>
