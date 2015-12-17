@@ -5,9 +5,12 @@ app.controller('base64Controller', [
     	function b64EncodeUnicode(str) {
     		return (!str || 0 === str.length)?"":btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {return String.fromCharCode('0x' + p1);}));
 		}
-		function b64DecodeUnicode(str) {
+        function b64DecodeUnicode(str) {
+            return (!str || 0 === str.length)?"":decodeURIComponent(escape(atob(str)));
+        }
+		function b64DecodeUnicodeSafe(str) {
 			try{
-				return (!str || 0 === str.length)?"":decodeURIComponent(escape(atob(str)));
+				return b64DecodeUnicode(str);
 			}catch(e){
 				return "";
 			}
@@ -15,6 +18,13 @@ app.controller('base64Controller', [
 
    		$scope.encode = function(text){return b64EncodeUnicode(text)};
 		$scope.decode = function(text){return b64DecodeUnicode(text)};
+        $scope.combine = function(text){
+            try{
+                return b64DecodeUnicode(text);
+            }catch(e){
+                return b64EncodeUnicode(text);
+            }
+        }
 }]
 );
 app.directive('elastic', [

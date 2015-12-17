@@ -22,13 +22,8 @@
 <div class="wrapper" ng-controller="base64Controller">
     <h1>Base64 decoder/encoder</h1>
     <label></label>
-    <textarea elastic ng-model="yourText"></textarea>
-
-    <div>{{yourText}}</div>
-    
-    <div class="enc" style="width: 76em; word-wrap: break-word;">{{encode(yourText)}}</div>
-    
-    <div class="dec">{{decode(yourText)}}</div>
+    <textarea elastic ng-model="yourText" placeholder="Put your text or base64 here"></textarea>
+    <div class="enc" style="width: 76em; word-wrap: break-word;">{{combine(yourText)}}</div>
 </div>
 </body>
 </html>
