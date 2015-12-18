@@ -1,29 +1,41 @@
 <!doctype html>
 <html ng-app="app">
 <head>
+    <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="app.js"></script>
-    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <style type="text/css">
         .wrapper {
-            text-align: left;
-            padding-left:20%;
-            padding-right:20%;
+           width: 76em; 
         }
         .wrapper textarea{
-            width: 700px;          
+           width: 100%;
+           height:10em;   
+           overflow:hidden;       
         }
-        .wrapper div{
-            padding-top: 20px;       
+        .result {
+            width: 100%; 
+            word-wrap: 
+            break-word;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-<div class="wrapper" ng-controller="base64Controller">
-    <h1>Base64 decoder/encoder</h1>
-    <label></label>
-    <textarea elastic ng-model="yourText" placeholder="Put your text or base64 here"></textarea>
-    <div class="enc" style="width: 76em; word-wrap: break-word;">{{combine(yourText)}}</div>
-</div>
+    <div class="container wrapper" ng-controller="base64Controller">
+        <div class="page-header"><h1>Base64 decoder/encoder</h1></div>
+        <textarea elastic ng-model="yourText" placeholder="Put your text or base64 here"></textarea>
+        <div class="result">{{combine(yourText)}}</div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 </body>
 </html>
