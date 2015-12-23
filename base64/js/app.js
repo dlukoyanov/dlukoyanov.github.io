@@ -20,10 +20,42 @@ app.controller('base64Controller', [
 		$scope.decode = function(text){return b64DecodeUnicode(text)};
         $scope.combine = function(text){
             try{
-                return b64DecodeUnicode(text);
+                return formatXml(b64DecodeUnicode(text));
             }catch(e){
                 return b64EncodeUnicode(text);
             }
+        }
+
+        function formatXml(xml) {
+            var formatted = '';
+            var reg = /(>)(<)(\/*)/g;
+            xml = xml.replace(reg, '$1\r\n$2$3');
+            var pad = 0;
+            jQuery.each(xml.split('\r\n'), function(index, node) {
+                var indent = 0;
+                if (node.match( /.+<\/\w[^>]*>$/ )) {
+                    indent = 0;
+                } else if (node.match( /^<\/\w/ )) {
+                if (pad != 0) {
+                    pad -= 1;
+                }
+                } else if (node.match( /^<\w[^>]*[^\/]>.*$/ )) {
+                    indent = 1;
+                } else {
+                    indent = 0;
+                }
+
+                var padding = '';
+                for (var i = 0; i < pad; i++) {
+                    padding += '  ';
+                }
+
+                formatted += padding + node + '\r\n';
+                console.log(formatted);
+                pad += indent;
+            });
+
+            return formatted;
         }
 }]
 );
@@ -44,6 +76,5 @@ app.directive('elastic', [
         };
     }
 ]);
-
 
 

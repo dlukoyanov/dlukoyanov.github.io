@@ -14,10 +14,10 @@
            height:10em;
            overflow:hidden;
         }
-        .result {
+        .result pre {
             width: 100%;
-            word-wrap:
-            break-word;
+            word-wrap: break-word;
+            white-space: pre-wrap;   
             margin-top: 20px;
         }
     </style>
@@ -26,7 +26,7 @@
     <div class="container wrapper col-sd-12" ng-controller="base64Controller">
         <div class="page-header"><h1>Base64 decoder/encoder</h1></div>
         <textarea elastic ng-model="yourText" placeholder="Put your text or base64 here"></textarea>
-        <div class="result">{{combine(yourText)}}</div>
+        <div class="result"><pre>{{combine(yourText)}}</pre></div>
     </div>
 
     <script src="js/jquery.min.js"></script>
